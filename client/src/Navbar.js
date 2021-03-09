@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
 
-const NavBar = ()=>{
+const NavBar = () => {
     return (
-        <div style={{display:'flex'}}>
+        <Menu>
             <Link to='/'>
-              <div>
-                  Home
-              </div> 
+                <Menu.Item>
+                    Editorials
+                </Menu.Item>
             </Link>
             <Link to='/hostpitals'>
-                Hostpitals
+                <Menu.Item>
+                    Hostpitals
+              </Menu.Item>
             </Link>
 
-        </div>
+        </Menu>
     )
 }
 
