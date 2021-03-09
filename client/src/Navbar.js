@@ -6,7 +6,7 @@ const NavBar = () => {
         <Menu>
             <Link to='/'>
                 <Menu.Item>
-                    Editorials
+                    Viruses
                 </Menu.Item>
             </Link>
             <Link to='/hostpitals'>

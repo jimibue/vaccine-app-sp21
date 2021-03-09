@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const dummyData = [
   {id:1, name:'vir 1'},
@@ -25,9 +26,11 @@ const Viruses =() => {
     const renderBugs =()=>{
       return bugs.map( bug => {
         return(
-          <div>
-            {bug.name}
-          </div>
+          <Link to={`/viruses/${bug.id}`}>
+            <div>
+              {bug.name}
+            </div>
+          </Link>
         )
       })
     }
