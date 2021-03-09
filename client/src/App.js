@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import {Route, Switch} from 'react-router-dom'
+import Viruses from './Viruses';
+import Hostpitals from './Hostpitals';
+import Virus from './Virus';
+import NavBar from './Navbar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <NavBar />
+       <Switch>
+        <Route exact path='/' component={Viruses} />
+        <Route exact path='/hostpitals' component={Hostpitals} />
+        <Route exact path='/viruses/:id' component={Virus} />
+       </Switch>
+    </>
+
   );
 }
 
