@@ -14,6 +14,11 @@ const NavBar = () => {
                     Hostpitals
               </Menu.Item>
             </Link>
+            <Link to='/doctors'>
+                <Menu.Item>
+                    Doctors
+              </Menu.Item>
+            </Link>
 
         </Menu>
     )

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     end
 
     resources :hostpitals
+    resources :doctors
   end
 end

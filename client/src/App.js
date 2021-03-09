@@ -6,6 +6,7 @@ import Hostpitals from './Hostpitals';
 import Virus from './Virus';
 import NavBar from './Navbar';
 import { Container } from 'semantic-ui-react';
+import Doctors from './Doctors';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
        <Switch>
         <Route exact path='/' component={Viruses} />
         <Route exact path='/hostpitals' component={Hostpitals} />
+        <Route exact path='/doctors' component={Doctors} />
         <Route exact path='/viruses/:id' component={Virus} />
        </Switch>
       </Container>
