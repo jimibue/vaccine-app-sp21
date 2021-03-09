@@ -6,7 +6,7 @@ Rails.application.routes.draw do
      resources :vaccines
     end
 
-    resources :hostpitals
+    resources :hospitals
     resources :doctors
   end
 end

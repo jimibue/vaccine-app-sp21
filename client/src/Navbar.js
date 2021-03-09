@@ -9,9 +9,9 @@ const NavBar = () => {
                     Viruses
                 </Menu.Item>
             </Link>
-            <Link to='/hostpitals'>
+            <Link to='/hospitals'>
                 <Menu.Item>
-                    Hostpitals
+                    Hospitals
               </Menu.Item>
             </Link>
             <Link to='/doctors'>

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_194524) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "hostpitals", force: :cascade do |t|
+  create_table "hospitals", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false

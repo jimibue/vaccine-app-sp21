@@ -1,2 +1,0 @@
-class Hostpital < ApplicationRecord
-end

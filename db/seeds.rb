@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Hostpital.create(name:'U 0f U', address:'123 main')
-Hostpital.create(name:'LDS ', address:'345 state')
+Hospital.create(name:'U 0f U', address:'123 main')
+Hospital.create(name:'LDS ', address:'345 state')
 
 covid = Bug.create(name:'Covid')
 sars  = Bug.create(name:'Sars')
