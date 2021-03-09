@@ -1,23 +1,23 @@
 import axios from 'axios'
 import {useParams, useHistory} from 'react-router-dom'
 
-const Virus =() => {
+const Bugs =() => {
     const {id} = useParams()
     let history = useHistory();
 
-    const deleteVirus = async () => {
+    const deleteBug = async () => {
       let res = await axios.delete(`/api/bugs/${id}`)
       history.push('/')
     }
     return (
         <>
-          <h1>Virus has id: {id}
+          <h1>Bug has id: {id}
             
           </h1>
-          <p  onClick={deleteVirus}>delete</p>
+          <p  onClick={deleteBug}>delete</p>
           <p  onClick={()=> history.goBack()}>go back</p>
         </>
     )
 }
 
-export default Virus
+export default Bugs

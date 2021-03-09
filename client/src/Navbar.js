@@ -6,7 +6,7 @@ const NavBar = () => {
         <Menu>
             <Link to='/'>
                 <Menu.Item>
-                    Viruses
+                    Bugs
                 </Menu.Item>
             </Link>
             <Link to='/hospitals'>

@@ -6,7 +6,7 @@ const dummyData = [
   {id:1, name:'vir 1'},
   {id:2, name:'vir 2'},
 ]
-const Viruses =() => {
+const Bugs =() => {
     useEffect(()=>{
       getBugs()
     },[])
@@ -26,7 +26,7 @@ const Viruses =() => {
     const renderBugs =()=>{
       return bugs.map( bug => {
         return(
-          <Link to={`/viruses/${bug.id}`}>
+          <Link to={`/bugs/${bug.id}`}>
             <div>
               {bug.name}
             </div>
@@ -43,4 +43,4 @@ const Viruses =() => {
     )
 }
 
-export default Viruses
+export default Bugs
