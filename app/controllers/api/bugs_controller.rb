@@ -5,9 +5,14 @@ class Api::BugsController < ApplicationController
     end
 
 
+    # res = axios.get('/api/bugs/1')
+    # setBug(res.data.bug)
     def show
-        render json: Bug.find(params[:id])
+        bug = Bug.find(params[:id])
+        render json: {bug: bug, vaccines: bug.vaccines} #res.data.bug, res.data.vaccines, 
+        # render json: bug #res.data
     end
+
 
     def create
       bug = Bug.new(bug_params)
