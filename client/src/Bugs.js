@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 const dummyData = [
   {id:1, name:'vir 1'},
@@ -37,7 +38,12 @@ const Bugs =() => {
 
     return (
         <>
-          <h1>Bugs</h1>
+          <h1 style={{display:'flex', justifyContent:'space-between'}}>
+            <span>Bugs</span>
+            <Link to='/bugs/new'>
+            <Button>New Bug</Button>
+            </Link>
+          </h1>
           {renderBugs()}
         </>
     )
