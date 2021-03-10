@@ -19,6 +19,7 @@ function App() {
      <Container>
        <Switch>
         <Route exact path='/' component={Bugs} />
+        <Route exact path='/bugs' component={Bugs} />
         <Route exact path='/hospitals' component={Hospitals} />
         <Route exact path='/doctors' component={Doctors} />
         <Route exact path='/bugs/new' component={NewFormBug} />

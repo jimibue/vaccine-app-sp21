@@ -8,6 +8,12 @@ class Api::VaccinesController < ApplicationController
    render json: @bug.vaccines
   end
 
+  #   axios.get('http://localhost:3001/api/bugs/2/vaccines/id)
+  def show
+    vaccine = @bug.vaccines.find(params[:id])
+    render json: vaccine
+  end
+
   #   axios.post('http://localhost:3001/api/bugs/2/vaccines',bug)
   def create
    # doesn't add bug_id for us
