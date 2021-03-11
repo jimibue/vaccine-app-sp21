@@ -6,7 +6,7 @@ const UpdateVaccineForm = () => {
         <div>
             <h1>UpdateVaccineForm</h1>
             <p>bug id: {bugId} </p>
-            <p>vaccine id: {id}</p>
+            <p>vaccine id: {sadfid}</p>
         </div>
     )
 }
