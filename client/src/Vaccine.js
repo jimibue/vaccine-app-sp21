@@ -1,8 +1,28 @@
+import axios from "axios"
 import { Link } from "react-router-dom"
 import { Card , Button} from "semantic-ui-react"
 
+// THINK ABOUT DELETE
+
+// what is api call for delete method and route
+// DELETE	/api/bugs/:bug_id/vaccines/:id
+
+// how do a remove an object from an array and return a new array => filter
+
 const Vaccine = (props)=>{
-    const {bugId, id, name, maker, effectiveness} = props
+    const {bugId, id, name, maker, effectiveness, deleteVaccine} = props
+
+    const deleteVaccineClickHandler = async ()=>{
+      try{
+      // axios call to delete
+      let res = await axios.delete(`/api/bugs/${bugId}/vaccines/${id}`)  
+      console.log(res)
+      // than call to update UI
+      deleteVaccine(id)
+      } catch(err){
+        alert('err')
+      }
+    }
     return (
         <Card>
         <Card.Content>
@@ -14,7 +34,7 @@ const Vaccine = (props)=>{
         </Card.Content>
         <Card.Content extra>
            <div >
-             <Button color='red'>Delete</Button>
+             <Button onClick={deleteVaccineClickHandler} color='red'>Delete</Button>
              <Link to={`/bugs/${bugId}/vaccines/${id}/edit`}>
                 <Button >Update</Button>
              </Link>

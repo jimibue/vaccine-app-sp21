@@ -34,11 +34,23 @@ const Bug = () => {
     let res = await axios.delete(`/api/bugs/${id}`)
     history.push('/')
   }
+
+  const deleteVaccine = (idOfVaccineThatWasDeleted) =>{
+      const filterVaccines = vaccines.filter(v => v.id != idOfVaccineThatWasDeleted)
+      setVaccines(filterVaccines)
+  }
   const renderVaccines = ()=>{
-    return vaccines.map(vaccine => <Vaccine key={vaccine.id} bugId={id} {...vaccine}/>)
+    return vaccines.map(vaccine => <Vaccine deleteVaccine={deleteVaccine} key={vaccine.id} bugId={id} {...vaccine}/>)
+  }
+
+  const addVaccine =(vaccine)=>{
+    // add something to an array and return a new array ...
+    const newVaccines = [vaccine, ...vaccines]
+    setVaccines(newVaccines)
   }
   return (
     <>
+     <Button onClick={() => history.goBack()}>go back</Button>
       <Card fluid color='red'>
       <Card.Content>
          <Card.Header style={{display:'flex', justifyContent:'space-between'}}>
@@ -56,14 +68,14 @@ const Bug = () => {
          </Card.Content>
         </Card>
 
-        <Button color='green' onClick={()=> setShowNewForm(!showNewForm)} >
+        <Button style={{marginBottom:'20px'}} color='green' onClick={()=> setShowNewForm(!showNewForm)} >
          {showNewForm ? 'hide form': 'New Vaccine'}
         </Button>
-       {showNewForm && <NewVaccineForm />}
+       {showNewForm && <NewVaccineForm setShowNewForm={setShowNewForm} addVaccine={addVaccine} bugId={id} />}
       <Card.Group>
         {renderVaccines()}
       </Card.Group>
-      <p onClick={() => history.goBack()}>go back</p>
+     
     </>
   )
 }
