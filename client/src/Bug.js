@@ -45,9 +45,12 @@ const Bug = () => {
            {bug.name} 
            <div >
              <Button color='red' onClick={deleteBug}>Delete</Button>
-             <Link to={`/bugs/${id}/edit`}>
+             <Link  to={{ pathname:`/bugs/${id}/edit`, bug: bug,  x:'yo' }}>
                 <Button>Update</Button>
              </Link>
+             {/* <Link  to={`/bugs/${id}/edit`}>
+                <Button>Update</Button>
+             </Link> */}
            </div>
          </Card.Header>
          </Card.Content>
