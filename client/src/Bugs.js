@@ -3,10 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 
-const dummyData = [
-  {id:1, name:'vir 1'},
-  {id:2, name:'vir 2'},
-]
 const Bugs =() => {
     useEffect(()=>{
       getBugs()

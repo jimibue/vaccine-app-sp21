@@ -5,15 +5,6 @@ import { Button, Card } from 'semantic-ui-react'
 import NewVaccineForm from './NewVaccineForm'
 import Vaccine from './Vaccine'
 
-const dummyBug = {
-  id: 1,
-  name: 'Covid'
-}
-
-const dummyVaccines = [
-  { id: 1, name: 'campell', effectiveness: 90.00, maker: 'J &J' },
-  { id: 2, name: 'Tacos', effectiveness: 90.00, maker: 'J &J' },
-]
 
 const Bug = () => {
   const { id } = useParams()
@@ -30,14 +21,12 @@ const Bug = () => {
 
   const getBug = async () => {
     try {
-      let res = await axios.get(`XX/api/bugs/${id}`)
+      let res = await axios.get(`/api/bugs/${id}`)
       setBug(res.data.bug)
       setVaccines(res.data.vaccines)
 
     } catch (err) {
       alert('error check console')
-      setBug(dummyBug)
-      setVaccines(dummyVaccines)
     }
   }
 
@@ -56,9 +45,12 @@ const Bug = () => {
            {bug.name} 
            <div >
              <Button color='red' onClick={deleteBug}>Delete</Button>
-             <Link to={{pathname:`/bugs/${id}/edit`}}>
-                <Button>Updates</Button>
+             <Link  to={{ pathname:`/bugs/${id}/edit`, bug: bug,  x:'yo' }}>
+                <Button>Update</Button>
              </Link>
+             {/* <Link  to={`/bugs/${id}/edit`}>
+                <Button>Update</Button>
+             </Link> */}
            </div>
          </Card.Header>
          </Card.Content>

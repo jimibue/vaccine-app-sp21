@@ -1,11 +1,62 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation, useHistory } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Button, Form } from 'semantic-ui-react'
 
-const UpdateFormBug = () => {
-    const { id } = useParams()
-    return(
+//// need to do axios call to get bug info to prepopulate form (optional)
+//// add form UI here
+//// add submit handler to form
+//// do axios call to update Bug to database
+// navigate back to bug show page
+
+const UpdateFormBug = (props) => {
+    const history = useHistory()
+    let {bug} = useLocation(); // rename bug to bugFromLink
+    const { id, x } = useParams()
+    // const [bug, setBug] = useState(null)
+    const [name, setName] = useState('')
+    // on mount run
+    // useEffect(() => {
+    //     getBug()
+    // }, [])
+
+    // const getBug = async () => {
+    //     try {
+    //         let res = await axios.get(`/api/bugs/${id}`)
+    //         // setBug(res.data.bug)
+    //         setName(res.data.bug.name)
+    //     } catch (error) {
+    //         alert(error)
+    //     }
+    // }
+    console.log(bug)
+
+    const handleSubmit = async (e)=>{
+        e.preventDefault()
+        try {
+            let res = await axios.put(`/api/bugs/${id}`, {name:name})
+            history.goBack()
+        } catch (error) {
+            alert('err')
+        }
+        console.log({name:name})
+    }
+    if (!bug) return <p>loading</p>
+    return (
         <div>
             <h1>UpdateFormBug</h1>
-            <h1>bug id: {id}</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Field>
+                    <label>Name</label>
+                    <input 
+
+                      value={name}
+                      defaultValue='sdf' 
+                      onChange={(e)=>setName(e.target.value)}
+                      />
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+            </Form>
         </div>
     )
 }
