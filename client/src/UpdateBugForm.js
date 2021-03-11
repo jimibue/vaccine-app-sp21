@@ -11,10 +11,39 @@ import { Button, Form } from 'semantic-ui-react'
 
 const UpdateFormBug = (props) => {
     const history = useHistory()
-    let {bug} = useLocation(); // rename bug to bugFromLink
-    const { id, x } = useParams()
+    // getting bug data via react router
+    let { bug, x } = useLocation(); 
+    const { id } = useParams()
+    const [name, setName] = useState(bug.name)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            let res = await axios.put(`/api/bugs/${id}`, { name: name })
+            history.goBack()
+        } catch (error) {
+            alert('err')
+        }
+        console.log({ name: name })
+    }
+    // if (!bug) return <p>loading</p>
+    return (
+        <div>
+            <h1>UpdateFormBug {x}</h1>
+            <Form onSubmit={handleSubmit}>
+                <Form.Field>
+                    <label>Name</label>
+                    <input
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                    />
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+            </Form>
+        </div>
+    )
+    
+    // onMount Example to getBUG
     // const [bug, setBug] = useState(null)
-    const [name, setName] = useState('')
     // on mount run
     // useEffect(() => {
     //     getBug()
@@ -29,36 +58,8 @@ const UpdateFormBug = (props) => {
     //         alert(error)
     //     }
     // }
-    console.log(bug)
+   // console.log(bug)
 
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
-        try {
-            let res = await axios.put(`/api/bugs/${id}`, {name:name})
-            history.goBack()
-        } catch (error) {
-            alert('err')
-        }
-        console.log({name:name})
-    }
-    if (!bug) return <p>loading</p>
-    return (
-        <div>
-            <h1>UpdateFormBug</h1>
-            <Form onSubmit={handleSubmit}>
-                <Form.Field>
-                    <label>Name</label>
-                    <input 
-
-                      value={name}
-                      defaultValue='sdf' 
-                      onChange={(e)=>setName(e.target.value)}
-                      />
-                </Form.Field>
-                <Button type='submit'>Submit</Button>
-            </Form>
-        </div>
-    )
 }
 
 export default UpdateFormBug

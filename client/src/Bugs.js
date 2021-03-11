@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 
 const Bugs =() => {
-    useEffect(()=>{
+  const [bugs,setBugs] = useState([])
+  const [toggleThing, setToggleThing] = useState(false)
+    
+  useEffect(()=>{
+    console.log('use EFfect called')
       getBugs()
     },[])
 
-    const [bugs,setBugs] = useState([])
 
     const getBugs = async () =>{
        try{
          let res = await axios.get('/api/bugs')
          setBugs(res.data)
-
        } catch(err){
          alert('error occured look at console')
        }
@@ -37,8 +39,10 @@ const Bugs =() => {
           <h1 style={{display:'flex', justifyContent:'space-between'}}>
             <span>Bugs</span>
             <Link to='/bugs/new'>
-            <Button>New Bug</Button>
+              <Button>New Bug</Button>
             </Link>
+            <Button onClick={()=>setToggleThing(!toggleThing)}>toggleThing</Button>
+            {toggleThing && <p>yo</p>}
           </h1>
           {renderBugs()}
         </>
