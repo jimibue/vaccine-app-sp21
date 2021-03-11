@@ -1,4 +1,4 @@
-import { useParams, useLocation, withRouter, useHistory } from 'react-router-dom'
+import { useParams, useLocation, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button, Form } from 'semantic-ui-react'
@@ -8,29 +8,29 @@ import { Button, Form } from 'semantic-ui-react'
 //// add submit handler to form
 //// do axios call to update Bug to database
 // navigate back to bug show page
+
 const UpdateFormBug = (props) => {
     const history = useHistory()
+    let {bug} = useLocation(); // rename bug to bugFromLink
     const { id, x } = useParams()
-    // const { bug, x } = useLocation()
-    const [bug, setBug] = useState(null)
+    // const [bug, setBug] = useState(null)
     const [name, setName] = useState('')
-
     // on mount run
-    useEffect(() => {
-        getBug()
-    }, [])
+    // useEffect(() => {
+    //     getBug()
+    // }, [])
 
-    const getBug = async () => {
-        try {
-            let res = await axios.get(`/api/bugs/${id}`)
-            setBug(res.data.bug)
-            setName(res.data.bug.name)
-        } catch (error) {
-            alert(error)
-        }
-    }
+    // const getBug = async () => {
+    //     try {
+    //         let res = await axios.get(`/api/bugs/${id}`)
+    //         // setBug(res.data.bug)
+    //         setName(res.data.bug.name)
+    //     } catch (error) {
+    //         alert(error)
+    //     }
+    // }
+    console.log(bug)
 
-    console.log(props.location)
     const handleSubmit = async (e)=>{
         e.preventDefault()
         try {
@@ -49,10 +49,11 @@ const UpdateFormBug = (props) => {
                 <Form.Field>
                     <label>Name</label>
                     <input 
-                      defaultValue={name} 
+
                       value={name}
+                      defaultValue='sdf' 
                       onChange={(e)=>setName(e.target.value)}
-                      placeholder='Name' />
+                      />
                 </Form.Field>
                 <Button type='submit'>Submit</Button>
             </Form>
@@ -60,4 +61,4 @@ const UpdateFormBug = (props) => {
     )
 }
 
-export default withRouter(UpdateFormBug)
+export default UpdateFormBug
